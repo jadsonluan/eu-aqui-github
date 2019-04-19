@@ -14,7 +14,12 @@ export default {
     }
   },
   mounted() {
-    this.token = this.getToken()
+    if (!this.token || !this.$cookie.get('token')) {
+      this.token = this.getToken()
+      this.$cookie.set('token', this.token, 1);
+    }
+
+    this.$router.replace("/")
   },
   methods: {
     async getToken() {

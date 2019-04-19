@@ -6,20 +6,18 @@
   </div>
 </template>
 <script>
+import dotenv from 'dotenv'
 export default {
   name: 'login',
   data() {
     return {
-      client_id: 'Iv1.6184190b164c87be'
+      client_id: 'Iv1.5110000ec4e59088'
     }
   },
   computed: {
     auth() {
       return `https://github.com/login/oauth/authorize?client_id=${this.client_id}`;   
-    }
-  },
-  methods: {
-    
+    },
   }
 }
 </script>

@@ -5,9 +5,31 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <router-view/>
+    <router-view @authenticated='onAuth'/>
   </div>
 </template>
+
+<script>
+import Home from '@/views/Home.vue'
+import Auth from '@/views/Auth.vue'
+export default {
+  name: 'app',
+  components: {
+    Home,
+    Auth
+  },
+  data() {
+    return {
+      currentUser: undefined
+    }
+  },
+  methods: {
+    onAuth(token) {
+      this.currentUser = token;
+    }
+  }
+}
+</script>
 
 <style>
 body, html { padding: 0; margin: 0; }

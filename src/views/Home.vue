@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Login v-if="!currentUser"></Login>
-    <User v-else></User>
+    <User :token='currentUser' v-else></User>
   </div>
 </template>
 
@@ -14,6 +14,10 @@ export default {
   components: {
     User,
     Login
+  },
+  mounted() {
+    // this.$cookie.delete("token");
+    this.currentUser = this.$cookie.get('token');
   },
   data() {
     return {
