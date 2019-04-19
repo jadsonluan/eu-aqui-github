@@ -6,7 +6,6 @@
   </div>
 </template>
 <script>
-import dotenv from 'dotenv'
 export default {
   name: 'login',
   data() {
