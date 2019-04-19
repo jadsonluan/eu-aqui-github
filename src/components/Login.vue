@@ -10,7 +10,7 @@ export default {
   name: 'login',
   data() {
     return {
-      client_id: 'Iv1.5110000ec4e59088'
+      client_id: 'Iv1.6184190b164c87be'
     }
   },
   computed: {
