@@ -8,15 +8,13 @@
 <script>
 export default {
   name: 'login',
-  data() {
-    return {
-      client_id: 'Iv1.5110000ec4e59088'
-    }
-  },
   computed: {
     auth() {
       return `https://github.com/login/oauth/authorize?client_id=${this.client_id}`;   
     },
+    client_id() {
+      return process.env.VUE_APP_CLIENT_ID;
+    }
   }
 }
 </script>
