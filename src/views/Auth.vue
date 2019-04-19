@@ -1,6 +1,6 @@
 <template>
 <div>
-  {{ token }}
+  Autenticado! Seu token é {{ token }}
 </div>
 </template>
 <script>
@@ -14,13 +14,15 @@ export default {
     }
   },
   mounted() {
-    this.getToken()
+    this.token = this.getToken()
   },
   methods: {
     async getToken() {
       await axios
         .get('http://localhost:3000/token')
-        .then(response => (this.token = response))
+        .then(response => {
+          this.token = response.data.token;
+        });
     }
   }
 }
