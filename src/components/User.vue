@@ -31,6 +31,7 @@ div.user-card img {
 }
 
 h1 { margin-bottom: 2px; }
+
 a { 
   /* #84CF6A */
   /* #16C0B0 */
@@ -38,6 +39,11 @@ a {
   text-decoration: none; 
   font-weight: bold; 
   font-size: 18px;
+}
+
+a:hover {
+  color: #84CF6A;
+  transition-duration: 0.33s;
 }
 
 </style>

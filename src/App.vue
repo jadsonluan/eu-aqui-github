@@ -1,20 +1,13 @@
 <template>
   <div id="app">
     <div class="bar"></div>
-    <Home></Home>
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div> -->
+    <router-view/>
   </div>
 </template>
-
-<script>
-import Home from "./components/Home.vue";
-
-export default {
-  name: "app",
-  components: {
-    Home
-  }
-};
-</script>
 
 <style>
 body, html { padding: 0; margin: 0; }
@@ -28,6 +21,7 @@ body, html { padding: 0; margin: 0; }
 
 div.bar {
   background: linear-gradient(-90deg, #84CF6A, #16C0B0);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   height: 50px;
 }
 </style>
