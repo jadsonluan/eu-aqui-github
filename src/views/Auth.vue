@@ -15,18 +15,19 @@ export default {
   },
   mounted() {
     if (!this.token || !this.$cookie.get('token')) {
-      this.token = this.getToken()
-      this.$cookie.set('token', this.token, 1);
+      this.getToken().then(() => {
+        this.$router.replace("/")
+      });
     }
-
-    this.$router.replace("/")
   },
   methods: {
     async getToken() {
       await axios
         .get('http://localhost:3000/token')
         .then(response => {
+          console.log(response.data.token);
           this.token = response.data.token;
+          this.$cookie.set('token', this.token, 1);
         });
     }
   }

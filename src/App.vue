@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style>
-body, html { padding: 0; margin: 0; }
+body, html { padding: 0; margin: 0; background: #FAFAFA}
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -41,9 +41,9 @@ body, html { padding: 0; margin: 0; }
   color: #2c3e50;
 }
 
-div.bar {
+/* div.bar {
   background: linear-gradient(-90deg, #84CF6A, #16C0B0);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   height: 50px;
-}
+} */
 </style>

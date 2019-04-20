@@ -29,6 +29,6 @@ export default {
 
 <style>
 #home {
-  padding: 40px;
+  padding: 80px 100px;
 }
 </style>
