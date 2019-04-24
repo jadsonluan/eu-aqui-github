@@ -2,7 +2,7 @@
   <div id="user">
     <div class="user-card">
       <div class="user-name-info">
-        <img :src="user.avatar_url" />
+        <img :src="user.avatarUrl" />
         <div>
           <h1><a :href='user.url'>{{user.login}}</a></h1>
           <p>{{user.name}}</p>
@@ -10,20 +10,20 @@
       </div>
       <div class="user-follow-info">
         <div>
-          <span class="follow-count">{{user.followers}}</span>
+          <span class="follow-count">{{user.followers.totalCount}}</span>
           <span class="follow-label">Followers</span>
         </div>
         <div>
-          <span class="follow-count">{{user.following}}</span>
+          <span class="follow-count">{{user.following.totalCount}}</span>
           <span class="follow-label">Following</span>
         </div>
       </div>
     </div>
     <div class="git-info">
-      <GitCardInfo :value='user.created_at | formatDate' label='Member since' icon='calendar-alt' iconColor='deepskyblue'/>
-      <GitCardInfo :value='user.public_repos' label='Public Repositories' icon='cubes' iconColor='deeppink'/>
+      <GitCardInfo :value='user.createdAt | formatDate' label='Member since' icon='calendar-alt' iconColor='deepskyblue'/>
+      <GitCardInfo :value='user.repositories.totalCount' label='Public Repositories' icon='cubes' iconColor='deeppink'/>
       <GitCardInfo :value='user.location' label='Location' icon='map-marker-alt' iconColor='greenyellow'/>
-      <GitCardInfo :value="user.hireable ? 'Yes' : 'No'" label='Looking for job?' icon='briefcase' iconColor='slateblue'/>
+      <GitCardInfo :value="user.isHireable ? 'Yes' : 'No'" label='Looking for job?' icon='briefcase' iconColor='slateblue'/>
     </div>
     <div v-on:click='onLogout' class="logout-btn">
       <font-awesome-icon icon='power-off'/>
@@ -55,16 +55,39 @@ export default {
       this.$router.go();
     },
     getUser() {
-      console.log(this.currentUser);
+      const GET_USER = `
+        {
+          viewer {
+            name
+            login
+            createdAt
+            isHireable
+            avatarUrl
+            location
+            followers {
+              totalCount
+            }
+            following {
+              totalCount
+            }
+            repositories {
+              totalCount
+            }
+          }
+        }
+      `;
+      
       axios({
-        method: "GET",
-        url: "https://api.github.com/user",
+        method: "POST",
+        url: "https://api.github.com/graphql",
         headers: {
-          Authorization: `token ${this.currentUser}`
+          Authorization: `bearer ${this.currentUser}`
+        },
+        data: {
+          query: GET_USER
         }
       }).then(r => {
-        console.log(r.data);
-        this.user = r.data;
+        this.user = r.data.data.viewer;
       })
     }
   },
