@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Login v-if="!currentUser"></Login>
-    <User :token='currentUser' v-else></User>
+    <User v-else :token='currentUser'></User>
   </div>
 </template>
 

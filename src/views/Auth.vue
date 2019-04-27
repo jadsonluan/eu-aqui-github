@@ -4,8 +4,6 @@
 </div>
 </template>
 <script>
-var axios = require('axios');
-
 export default {
   name: 'auth',
   data() {
@@ -14,21 +12,19 @@ export default {
     }
   },
   mounted() {
-    if (!this.token || !this.$cookie.get('token')) {
-      this.getToken().then(() => {
-        this.$router.replace("/")
-      });
+    if (this.$route.params.token) {
+      if (!this.token || !this.$cookie.get('token')) {
+        this.setUpToken();
+      }
     }
+
+    this.$router.replace("/");
   },
   methods: {
-    async getToken() {
-      await axios
-        .get('http://localhost:3000/token')
-        .then(response => {
-          console.log(response.data.token);
-          this.token = response.data.token;
-          this.$cookie.set('token', this.token, 1);
-        });
+    setUpToken() {
+      this.token = this.$route.params.token;
+      console.log(this.token);
+      this.$cookie.set('token', this.token, 1);
     }
   }
 }

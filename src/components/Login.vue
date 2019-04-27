@@ -12,11 +12,8 @@ export default {
   name: 'login',
   computed: {
     auth() {
-      return `https://github.com/login/oauth/authorize?client_id=${this.client_id}`;   
+      return "http://localhost:3000/login";   
     },
-    client_id() {
-      return process.env.VUE_APP_CLIENT_ID;
-    }
   }
 }
 </script>
