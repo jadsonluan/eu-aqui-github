@@ -23,7 +23,6 @@ export default {
   methods: {
     setUpToken() {
       this.token = this.$route.params.token;
-      console.log(this.token);
       this.$cookie.set('token', this.token, 1);
     }
   }

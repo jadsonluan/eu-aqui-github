@@ -12,7 +12,7 @@ export default {
   name: 'login',
   computed: {
     auth() {
-      return "http://localhost:3000/login";   
+      return "http://localhost:5000/auth/login";   
     },
   }
 }

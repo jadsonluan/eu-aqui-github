@@ -45,7 +45,16 @@ export default {
       user: {
         name: "Loading",
         login: "Loading",
-        url: ""
+        url: "",
+        name: "loading",
+        login: "loading",
+        createdAt: null,
+        isHireable: "loading",
+        avatarUrl: "loading",
+        location: "loading",
+        followers: {totalCount: 0},
+        following: {totalCount: 0},
+        repositories: {totalCount: 0},
       }
     }
   },
